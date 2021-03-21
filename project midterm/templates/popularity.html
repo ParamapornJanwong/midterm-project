@@ -1,0 +1,42 @@
+{% extends "base_layout.html" %}
+{% block content %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+        <script src="https://kit.fontawesome.com/6e67fcdf34.js" crossorigin="anonymous"></script>
+
+<body>
+
+<div class="container">
+
+    <table class="table" >
+        <thead>
+            <tr>
+                <th scope="col" style="color:black; background-color: palevioletred;">Cinema</th>
+                <th scope="col" style="color:black; background-color: palevioletred;">Popularity</th>
+                {# <th scope="col">Genres</th> #}
+                {# <th scope="col">Country</th> #}
+            </tr>
+        </thead>
+       {% for movie in data["results"][0:10:] %}  
+            <tr>
+            <th scope="row"><a href="/movie/{{movie['id']}}" style="color:palevioletred; " >{{movie["original_title"] }}</a></th>
+            <td style="color:palevioletred; ">{{movie["popularity"] }}</td>
+          {#  <td>{{movie["genres"]["name"]}}</td> #}
+          {# <td>{{movie["production_companies"]["origin_country"] }}</td> #}
+        </tr>
+        {% endfor %}
+        </table>
+
+</div>
+{% endblock %}
+</body>

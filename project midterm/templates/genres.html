@@ -1,0 +1,57 @@
+{% extends "base_layout.html" %}
+{% block content %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+</script>
+<script src="https://kit.fontawesome.com/6e67fcdf34.js" crossorigin="anonymous"></script>
+
+
+<div class="container-fluid">
+
+    <style>
+        .card-columns {
+            column-count: 5;
+            @include media-breakpoint-only(lg) {
+                column-count: 5;
+            }
+            @include media-breakpoint-only(xl) {
+                column-count: 5;
+            }
+        }
+    </style>
+
+    <div class="card-columns">
+    {% for page in data %}
+    <!--<div class="col-md-2">-->
+        {% for movie in page["results"] %}
+        <a href="/movie/{{movie['id']}}">
+            <div class="card" style="width: 200px;height: 360px; background-color: rgb(250, 219, 234);">
+                {% if (movie['poster_path'] != None) %}
+                <img class="card-img-top img-fluid" style="height: 264px;"
+                    src="https://image.tmdb.org/t/p/w500/{{movie['poster_path']}}" alt="">
+                {% else %}
+                <img class="card-img-top img-fluid" style="height: 264px;"
+                    src="https://i.pinimg.com/564x/3a/d2/94/3ad294942cbef4fa2a112dc071d0f40d.jpg" alt="No Image">
+                {% endif %}
+                <div class="card-text" style=text-align:center;>
+                    <h5 class="card-title">{{movie["original_title"]}}</h5>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+</body>

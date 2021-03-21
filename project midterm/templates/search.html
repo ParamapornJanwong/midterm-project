@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+
+<div class="list-group pb-4">
+    {% for movie in data["results"] %}
+    <div class="col">
+      <a href="/movie/{{movie['id']}}">
+          <div class="card" style="width: 200px;height: 360px; background-color: rgb(250, 219, 234);">
+              {% if (movie['poster_path'] != None) %}
+              <img class="card-img-top img-fluid" style="height: 264px;"
+                  src="https://image.tmdb.org/t/p/w500/{{movie['poster_path']}}" alt="">
+              {% else %}
+              <img class="card-img-top img-fluid" style="height: 264px;"
+                  src="https://i.pinimg.com/564x/3a/d2/94/3ad294942cbef4fa2a112dc071d0f40d.jpg"
+                  alt="No Image">
+                  <!--<img class="card-img-top img-fluid" style="height: 264px;"
+                  src="https://i.pinimg.com/564x/3a/d2/94/3ad294942cbef4fa2a112dc071d0f40d.jpg"
+                  alt="No Image">-->
+              {% endif %}
+              <div class="card-text" style=text-align:center;>
+                  <h5 class="card-title">{{movie["original_title"]}}</h5>
+              </div>
+          </div>
+      </a>
+  </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}  
